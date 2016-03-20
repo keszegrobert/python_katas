@@ -1,13 +1,26 @@
 class BowlingGame:
-	score_table = None
+	rolls = None
 	def __init__(self):
-		self.score_table = []
+		self.rolls = []
 
 	def roll(self,pins):
-		self.score_table.append(pins)
+		self.rolls.append(pins)
+
+	def getBonusForSpare(self,frame):
+		return self.rolls[2*frame+2]
+
+	def isSpare(self,frame):
+		return self.rolls[2*frame] + self.rolls[2*frame+1] == 10
+
+	def scoreForSpare(self,frame):
+		return self.rolls[2*frame] + self.rolls[2*frame+1]
 
 	def score(self):
 		counter = 0
-		for i in range(0,20):
-			counter += self.score_table[i]
+
+		for i in range(0,10):
+			if self.isSpare(i):
+				counter += 10 + self.getBonusForSpare(i);
+			else:
+				counter += self.scoreForSpare(i)
 		return counter
