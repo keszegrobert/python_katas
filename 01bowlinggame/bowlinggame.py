@@ -1,11 +1,13 @@
 class BowlingGame:
-	counter = 0
+	score_table = None
 	def __init__(self):
-		pass
+		self.score_table = []
 
 	def roll(self,pins):
-		self.counter += pins
+		self.score_table.append(pins)
 
 	def score(self):
-
-		return self.counter
+		counter = 0
+		for i in range(0,20):
+			counter += self.score_table[i]
+		return counter
