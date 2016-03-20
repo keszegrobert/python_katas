@@ -12,22 +12,24 @@ class TestBowlingGame(TestCase):
 	def tearDown(self):
 	    pass
 
+	def roll_spare(self):
+		self.game.roll(7)
+		self.game.roll(3)
+
+	def roll_many(self,rolls,pins):
+		for i in range(0,rolls):
+			self.game.roll(pins)		
+
 	def test_guttergame(self):
-		for i in range(0,20):
-			self.game.roll(0)
+		self.roll_many(20,0)
 		assert self.game.score() == 0
 
 	def test_gameofones(self):
-		for i in range(0,20):
-			self.game.roll(1)
+		self.roll_many(20,1)
 		assert self.game.score() == 20
 
 	def test_spare(self):
-		self.game.roll(7)
-		self.game.roll(3)
+		self.roll_spare()
 		self.game.roll(4)
-		for i in range(0,17):
-			self.game.roll(0)
+		self.roll_many(17,0)
 		assert self.game.score() == 10+4+4
-
-	
