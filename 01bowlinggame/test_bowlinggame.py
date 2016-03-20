@@ -9,12 +9,12 @@ class TestBowlingGame(TestCase):
 	def setUp(self):
 	    self.game = BowlingGame()
 
-	def tearDown(self):
-	    pass
-
 	def roll_spare(self):
 		self.game.roll(7)
 		self.game.roll(3)
+
+	def roll_strike(self):
+		self.game.roll(10)
 
 	def roll_many(self,rolls,pins):
 		for i in range(0,rolls):
@@ -35,7 +35,7 @@ class TestBowlingGame(TestCase):
 		assert self.game.score() == 10+4+4
 
 	def test_strike(self):
-		self.game.roll(10)
+		self.roll_strike()
 		self.game.roll(3)
 		self.game.roll(4)
 		self.roll_many(16,0)
