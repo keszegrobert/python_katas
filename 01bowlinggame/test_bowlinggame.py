@@ -33,3 +33,10 @@ class TestBowlingGame(TestCase):
 		self.game.roll(4)
 		self.roll_many(17,0)
 		assert self.game.score() == 10+4+4
+
+	def test_strike(self):
+		self.game.roll(10)
+		self.game.roll(3)
+		self.game.roll(4)
+		self.roll_many(16,0)
+		assert self.game.score() == 10 + (3+4) + (3+4)
