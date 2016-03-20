@@ -1,26 +1,23 @@
 from bowlinggame import BowlingGame
-from nose.tools import with_setup
-
-game = None
+from unittest import TestCase
 
 #https://github.com/hontas/bowling-game-kata
-def setup_func():
-	global game
-	game = BowlingGame()
 
-def teardown_func():
-	pass
+class TestBowlingGame(TestCase):
+	game = None
 
-@with_setup(setup_func,teardown_func)
-def test_guttergame():
-	global game
-	for i in range(0,20):
-		game.roll(0)
-	assert game.score() == 0
+	def setUp(self):
+	    self.game = BowlingGame()
 
-@with_setup(setup_func,teardown_func)
-def test_gameofones():
-	global game
-	for i in range(0,20):
-		game.roll(1)
-	assert game.score() == 20
+	def tearDown(self):
+	    pass
+
+	def test_guttergame(self):
+		for i in range(0,20):
+			self.game.roll(0)
+		assert self.game.score() == 0
+
+	def test_gameofones(self):
+		for i in range(0,20):
+			self.game.roll(1)
+		assert self.game.score() == 20
