@@ -1,9 +1,11 @@
 class BowlingGame:
+	counter = 0
 	def __init__(self):
 		pass
 
 	def roll(self,pins):
-		pass
+		self.counter += pins
 
 	def score(self):
-		return 0
+
+		return self.counter
