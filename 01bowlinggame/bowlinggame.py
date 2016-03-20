@@ -5,8 +5,6 @@ class BowlingGame:
 
 	def roll(self,pins):
 		self.rolls.append(pins)
-		if pins == 10:
-			self.rolls.append(0)
 
 	def getBonusForSpare(self,frame):
 		return self.rolls[frame+2]
@@ -21,7 +19,10 @@ class BowlingGame:
 		counter = 0
 		frameIndex = 0
 		for i in range(0,10):
-			if self.isSpare(frameIndex):
+			if self.rolls[frameIndex] == 10:
+				counter += 10 + self.rolls[frameIndex+1] + self.rolls[frameIndex+2]
+				frameIndex += 1
+			elif self.isSpare(frameIndex):
 				counter += 10 + self.getBonusForSpare(frameIndex);
 				frameIndex += 2
 			else:
