@@ -6,10 +6,16 @@ class TestGameOfLife(TestCase):
 		self.game = GameOfLife()
 
 	def test_if_any_cell_with_less_than_two_neighbours_dies(self):
-		next_generation = self.game.evolve([(0,0)])
-		self.assertFalse((0,0) in next_generation)
-		next_generation = self.game.evolve([(0,0),(1,0)])
-		self.assertFalse((1,0) in next_generation)
+		self.evolve([(0,0)])
+		self.assert_dead((0,0))
+		self.evolve([(0,0),(1,0)])
+		self.assert_dead((1,0))
+
+	def evolve(self,cells):
+		self.next_generation = self.game.evolve(cells)
+
+	def assert_dead(self,cell):
+		self.assertFalse(cell in self.next_generation)
 
 if __name__ == '__main__':
 	unittest.main()
