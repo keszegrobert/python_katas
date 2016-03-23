@@ -1,2 +1,3 @@
 class GameOfLife:
-	pass		
+	def evolve(self,cells):
+		return set()
