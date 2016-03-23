@@ -5,6 +5,12 @@ class GameOfLife:
 			neighbourcount = self.__count_living_neighbours(cell,cells)
 			if neighbourcount == 2 or neighbourcount == 3:
 				next_generation.add(cell)
+			x,y = cell
+			for dx,dy in self.__get_neighbour_offsets():
+				neighbour = (x+dx,y+dy)
+				if neighbour not in cells and self.__count_living_neighbours(neighbour,cells) == 3:
+					next_generation.add(neighbour)
+
 		return next_generation
 
 	def __count_living_neighbours(self,cell,cells):
@@ -12,8 +18,8 @@ class GameOfLife:
 		x,y = cell
 		for dx,dy in self.__get_neighbour_offsets():
 			neighbour = (x+dx,y+dy)
-			if (neighbour in cells):
-				number_of_neighbours += 1	
+			if neighbour in cells:
+				number_of_neighbours += 1
 		return number_of_neighbours
 
 	def __get_neighbour_offsets(self):
