@@ -8,12 +8,16 @@ class GameOfLife:
 		return next_generation
 
 	def __count_living_neighbours(self,cell,cells):
-		numbber_of_neighbours = 0
+		number_of_neighbours = 0
 		x,y = cell
-		for (dx,dy) in [(-1,-1),(-1,0),(-1,1),
-						( 0,-1),       ( 0,1),
-						( 1,-1),( 1,0),( 1,1)]:
+		for dx,dy in self.__get_neighbour_offsets():
 			neighbour = (x+dx,y+dy)
 			if (neighbour in cells):
-				numbber_of_neighbours += 1	
-		return numbber_of_neighbours
+				number_of_neighbours += 1	
+		return number_of_neighbours
+
+	def __get_neighbour_offsets(self):
+		return [(-1,-1),(-1,0),(-1,1),
+				( 0,-1),       ( 0,1),
+				( 1,-1),( 1,0),( 1,1)]
+
