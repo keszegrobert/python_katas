@@ -5,8 +5,7 @@ class GameOfLife:
 			if self.__should_survive(cell,cells):
 				next_generation.add(cell)
 			for neighbour in self.__get_neighbours(cell):
-				if neighbour not in cells and \
-					self.__count_living_neighbours(neighbour,cells) == 3:
+				if self.__should_become_alive(neighbour,cells):
 					next_generation.add(neighbour)
 
 		return next_generation
@@ -15,6 +14,10 @@ class GameOfLife:
 		neighbourcount = self.__count_living_neighbours(cell,cells)
 		if neighbourcount == 2 or neighbourcount == 3:
 			return True
+
+	def __should_become_alive(self,cell,cells):
+		return (cell not in cells and 
+				self.__count_living_neighbours(cell,cells) == 3)
 
 	def __get_neighbours(self,cell):
 		neighbours = []
