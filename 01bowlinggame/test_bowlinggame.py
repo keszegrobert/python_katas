@@ -4,7 +4,6 @@ from unittest import TestCase
 #https://github.com/hontas/bowling-game-kata
 
 class TestBowlingGame(TestCase):
-	game = None
 
 	def setUp(self):
 	    self.game = BowlingGame()
