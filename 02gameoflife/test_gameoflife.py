@@ -18,6 +18,13 @@ class TestGameOfLife(TestCase):
 		self.assert_alive((0,2))
 		self.assert_alive((1,2))
 
+	def test_if_any_cell_with_more_than_three_neighbours_dies(self):
+		self.evolve([(0,1),(1,1),(2,1),
+			         (0,2),(1,2),(2,2)])
+		self.assert_dead((1,1))
+		self.assert_dead((1,2))
+
+
 	def evolve(self,cells):
 		self.next_generation = self.game.evolve(cells)
 
