@@ -24,6 +24,11 @@ class TestGameOfLife(TestCase):
 		self.assert_dead((1,1))
 		self.assert_dead((1,2))
 
+	def test_if_any_dead_cell_with_exactly_three_neighbours_becomes_alive(self):
+		self.evolve([      (1,1),(2,1),
+			         (0,2),(1,2)      ])
+		self.assert_alive((0,1))
+		self.assert_alive((2,2))
 
 	def evolve(self,cells):
 		self.next_generation = self.game.evolve(cells)
