@@ -6,7 +6,8 @@ SIII = 3
 SIV = 4
 SV = 5
 SVI = 6
-
+SVII = 7
+SVIII = 8
 
 class RomanToArabicConverter:
 	state_machine = {
@@ -14,8 +15,11 @@ class RomanToArabicConverter:
 		SI:   {'I':(SII,1),  'V':(SIV,3) },
 		SII:  {'I':(SIII,1) 			 },
 		SIII: {'I':(SIV,1)               },
-		SIV:  {},
-		SV:	  {'I':(SVI,1)}
+		SIV:  {                          },
+		SV:   {'I':(SVI,1)               },
+		SVI:  {'I':(SVII,1)              },
+		SVII: {'I':(SVIII,1)             },
+		SVIII:{}
 	}
 
 
