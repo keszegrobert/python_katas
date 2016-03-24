@@ -6,41 +6,37 @@ class TestRomanToArabicConverter(TestCase):
 		self.converter = RomanToArabicConverter()
 
 	def test_i_is_one(self):
-		arabic = self.convert('I')
-		self.assertEquals(arabic,1)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('I',1)
 
 	def test_ii_is_two(self):
-		arabic = self.convert('II')
-		self.assertEquals(arabic,2)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('II',2)
 
 	def test_iii_is_three(self):
-		arabic = self.convert('III')
-		self.assertEquals(arabic,3)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('III',3)
 
 	def test_iiii_is_four(self):
-		arabic = self.convert('IIII')
-		self.assertEquals(arabic,4)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('IIII',4)
 
 	def test_iv_is_four(self):
-		arabic = self.convert('IV')
-		self.assertEquals(arabic,4)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('IV',4)
 
 	def test_iiv_is_invalid(self):
-		arabic = self.convert('IIV')
-		self.assertFalse(self.converter.is_valid())
+		self.check_invalidity('IIV')
 
 	def test_v_is_five(self):
-		arabic = self.convert('V')
-		self.assertEquals(arabic,5)
-		self.assertTrue(self.converter.is_valid())
+		self.check_equality('V',5)
 
-	def convert(self,roman):
-		return self.converter.convert(roman)
+	def test_vi_is_six(self):
+		self.check_equality('VI',6)
+
+	def check_equality(self,roman,arabic):
+		converted = self.converter.convert(roman)
+		self.assertTrue(self.converter.is_valid())
+		self.assertEquals(converted,arabic)
+
+	def check_invalidity(self,roman):
+		self.converter.convert(roman)
+		self.assertFalse(self.converter.is_valid())
 
 if __name__ == '__main__':
 	unittest.main()

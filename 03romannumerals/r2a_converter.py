@@ -1,36 +1,37 @@
+SERR = -1
+S0 = 0
+SI = 1
+SII = 2
+SIII = 3
+SIV = 4
+SV = 5
+SVI = 6
+
+
 class RomanToArabicConverter:
-	STATE_ERR = -1
-	STATE_0 = 0
-	STATE_I = 1
-	STATE_II = 2
-	STATE_IV = 3
-	STATE_V = 4
+	state_machine = {
+		S0:   {'I':(SI,1),   'V':(SV,5)  },
+		SI:   {'I':(SII,1),  'V':(SIV,3) },
+		SII:  {'I':(SIII,1) 			 },
+		SIII: {'I':(SIV,1)               },
+		SIV:  {},
+		SV:	  {'I':(SVI,1)}
+	}
+
 
 	def convert(self,roman):
-		self.state = self.STATE_0
+		self.state = S0
 		result = 0
 		for i in range(0,len(roman)):
-			if self.state == self.STATE_0:
-				if roman[i] == 'I':
-					self.state = self.STATE_I
-					result = 1
-				elif roman[i] == 'V':
-					self.state = self.STATE_V
-					result = 5
-			elif self.state == self.STATE_I:
-				if roman[i] == 'I':
-					self.state = self.STATE_II
-					result = 2
-				elif roman[i] == 'V':
-					self.state = self.STATE_II
-					result = 4
-			elif self.state == self.STATE_II:
-				if roman[i] == 'I':
-					self.state = self.STATE_II
-					result += 1
-				elif roman[i] == 'V':
-					self.state = self.STATE_ERR
+			possibilities = self.state_machine[self.state]
+			try:
+				next_state,add = possibilities[roman[i]]
+				self.state = next_state
+				result += add
+			except KeyError:
+				self.state = SERR
+
 		return result
 
 	def is_valid(self):
-		return self.state != self.STATE_ERR
+		return self.state != SERR
