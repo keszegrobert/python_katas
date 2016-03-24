@@ -1,2 +1,3 @@
 class RomanToArabicConverter:
-	pass
+	def convert(self,roman):
+		return 1
