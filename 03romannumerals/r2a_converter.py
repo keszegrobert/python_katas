@@ -30,4 +30,4 @@ class RomanToArabicConverter:
 		return result
 
 	def is_valid(self):
-		self.state != self.STATE_ERR
+		return self.state != self.STATE_ERR
