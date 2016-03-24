@@ -11,8 +11,9 @@ SVIII = 8
 SIX = 9
 SX = 10
 SXI = 11
-SXII = 12
-SXIII = 13
+SXX = 20
+SXXX = 30
+SXL = 40
 
 class RomanToArabicConverter:
 	state_machine = {
@@ -25,7 +26,11 @@ class RomanToArabicConverter:
 		SVI:  {'I':(SVII,1)              },
 		SVII: {'I':(SVIII,1)             },
 		SVIII:{},
-		SX:   {'I':(SI,1),   'V':(SV,5), 'X':(SX,10) },
+		SIX:  {},
+		SX:   {'I':(SI,1),   'V':(SV,5), 'X':(SXX,10) },
+		SXX:  {'I':(SI,1),   'V':(SV,5), 'X':(SXXX,10) },
+		SXXX: {'I':(SI,1),   'V':(SV,5), 'X':(SXL,10) },
+		SXL:  {'I':(SI,1),   'V':(SV,5) }
 	}
 
 
