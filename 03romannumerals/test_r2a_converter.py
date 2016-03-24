@@ -6,8 +6,15 @@ class TestRomanToArabicConverter(TestCase):
 		self.converter = RomanToArabicConverter()
 
 	def test_i_is_one(self):
-		arabic = self.converter.convert('I')
+		arabic = self.convert('I')
 		self.assertTrue(arabic == 1)
-		
+
+	def test_ii_is_two(self):
+		arabic = self.convert('II')
+		self.assertTrue(arabic == 2)
+
+	def convert(self,roman):
+		return self.converter.convert(roman)
+
 if __name__ == '__main__':
 	unittest.main()
