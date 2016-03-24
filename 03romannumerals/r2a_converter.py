@@ -14,10 +14,16 @@ SXI = 11
 SXX = 20
 SXXX = 30
 SXL = 40
+SL = 50
+SLX = 60
+SLXX = 70
+SLXXX = 80
+SXC = 90
+SC = 100
 
 class RomanToArabicConverter:
 	state_machine = {
-		S0:   {'I':(SI,1),   'V':(SV,5), 'X':(SX,10) },
+		S0:   {'I':(SI,1),   'V':(SV,5), 'X':(SX,10), 'L':(SL,50) },
 		SI:   {'I':(SII,1),  'V':(SIV,3),'X':(SIX,8) },
 		SII:  {'I':(SIII,1) 			 },
 		SIII: {'I':(SIV,1)               },
@@ -27,10 +33,15 @@ class RomanToArabicConverter:
 		SVII: {'I':(SVIII,1)             },
 		SVIII:{},
 		SIX:  {},
-		SX:   {'I':(SI,1),   'V':(SV,5), 'X':(SXX,10) },
+		SX:   {'I':(SI,1),   'V':(SV,5), 'X':(SXX,10), 'L':(SXL,30), 'C':(SXC,80) },
 		SXX:  {'I':(SI,1),   'V':(SV,5), 'X':(SXXX,10) },
 		SXXX: {'I':(SI,1),   'V':(SV,5), 'X':(SXL,10) },
-		SXL:  {'I':(SI,1),   'V':(SV,5) }
+		SXL:  {'I':(SI,1),   'V':(SV,5) },
+		SL:	  {'I':(SI,1),   'V':(SV,5), 'X':(SLX,10)},
+		SLX:  {'I':(SI,1),   'V':(SV,5), 'X':(SLXX,10)},
+		SLXX: {'I':(SI,1),   'V':(SV,5), 'X':(SLXXX,10)},
+		SLXXX:{'I':(SI,1),   'V':(SV,5)},
+		SXC:  {'I':(SI,1),   'V':(SV,5)}
 	}
 
 

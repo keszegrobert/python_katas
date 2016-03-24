@@ -5,73 +5,67 @@ class TestRomanToArabicConverter(TestCase):
 	def setUp(self):
 		self.converter = RomanToArabicConverter()
 
-	def test_i(self):
-		self.check_equality('',0)
-		self.check_equality('I',1)
-		self.check_equality('II',2)
-		self.check_equality('III',3)
+	def check_0_to_9(self,prefix,add):
+		self.check_equality(prefix+'',add+0)
 
-	def test_i_and_v(self):
-		self.check_equality('IV',4)
-		self.check_invalidity('IIV')
-		self.check_invalidity('IVI')
-		self.check_invalidity('IVV')
-		self.check_equality('IIII',4)
-		self.check_invalidity('IIIV')
-		self.check_invalidity('IIIIV')
-		self.check_equality('V',5)
-		self.check_equality('VI',6)
-		self.check_invalidity('VV')
-		self.check_equality('VII',7)
-		self.check_invalidity('VIV')
-		self.check_equality('VIII',8)
-		self.check_invalidity('VIIV')
-		self.check_invalidity('VIIIV')
-		self.check_invalidity('VIIII')
+		self.check_equality(prefix+'I',add+1)
 
-	def test_i_and_x(self):
-		self.check_equality('X',10)
-		self.check_equality('IX',9)
-		self.check_equality('XI',11)
-		self.check_equality('XX',20)
+		self.check_equality(prefix+'II',add+2)
+		self.check_invalidity(prefix+'IIV')
+		self.check_invalidity(prefix+'IIX')
 
-		self.check_invalidity('IIX')
-		self.check_invalidity('IXX')
-		self.check_equality('XII',12)
-		self.check_equality('XIX',19)
-		self.check_equality('XXI',21)
-		self.check_equality('XXX',30)
+		self.check_equality(prefix+'III',add+3)
+		self.check_invalidity(prefix+'IIIV')
+		self.check_invalidity(prefix+'IIIX')
 
-		self.check_invalidity('IIIX')
-		self.check_invalidity('XIIX')
-		self.check_invalidity('XIXX')
-		self.check_equality('XIII',13)
-		self.check_invalidity('XIIX')
-		self.check_equality('XXII',22)
-		self.check_equality('XXIX',29)
-		self.check_equality('XXXI',31)
-		self.check_equality('XXXX',40)
+		self.check_equality(prefix+'IIII',add+4)
+		self.check_invalidity(prefix+'IIIII')
+		self.check_invalidity(prefix+'IIIIV')
+		self.check_invalidity(prefix+'IIIIX')
 
-		self.check_invalidity('IIIIX')
-		self.check_equality('XIIII',14)
-		self.check_invalidity('XIIIX')
-		self.check_invalidity('XIIIII')
-		self.check_equality('XXIII',23)
-		self.check_equality('XXIIII',24)
-		self.check_equality('XXXII',32)
-		self.check_equality('XXXIX',39)
-		self.check_equality('XXXXI',41)
-		self.check_invalidity('XXXXX')
-		self.check_equality('XXXIII',33)
-		self.check_equality('XXXIIII',34)
-		self.check_equality('XXXXII',42)
-		self.check_equality('XXXXIII',43)
-		self.check_equality('XXXXIIII',44)
-		self.check_equality('XXXXIX',49)
-		self.check_invalidity('XXXIXX')
+		self.check_equality(prefix+'IV',add+4)
+		self.check_invalidity(prefix+'IVI')
+		self.check_invalidity(prefix+'IVV')
+		self.check_invalidity(prefix+'IVX')
 
-	def test_i_and_x_and_v(self):
-		pass
+		self.check_equality(prefix+'V',add+5)
+		self.check_invalidity(prefix+'VV')
+		self.check_invalidity(prefix+'VX')
+
+		self.check_equality(prefix+'VI',add+6)
+		self.check_invalidity(prefix+'VIV')
+		self.check_invalidity(prefix+'VIX')
+
+		self.check_equality(prefix+'VII',add+7)
+		self.check_invalidity(prefix+'VIIV')
+		self.check_invalidity(prefix+'VIIX')
+
+		self.check_equality(prefix+'VIII',add+8)
+		self.check_invalidity(prefix+'VIIII')
+		self.check_invalidity(prefix+'VIIIV')
+		self.check_invalidity(prefix+'VIIIX')
+
+		self.check_equality(prefix+'IX',add+9)
+		self.check_invalidity(prefix+'IXI')
+		self.check_invalidity(prefix+'IXV')
+		self.check_invalidity(prefix+'IXX')
+
+	def test_0_to_9(self):
+		self.check_0_to_9('',0)
+
+	def check_10_to_99(self,prefix,add):
+		self.check_0_to_9(prefix+'X',add+10)
+		self.check_0_to_9(prefix+'XX',add+20)
+		self.check_0_to_9(prefix+'XXX',add+30)
+		self.check_0_to_9(prefix+'XL',add+40)
+		self.check_0_to_9(prefix+'L',add+50)
+		self.check_0_to_9(prefix+'LX',add+60)
+		self.check_0_to_9(prefix+'LXX',add+70)
+		self.check_0_to_9(prefix+'LXXX',add+80)
+		self.check_0_to_9(prefix+'XC',add+90)
+
+	def test_10_to_99(self):
+		self.check_10_to_99('',0)
 
 	def check_equality(self,roman,arabic):
 		converted = self.converter.convert(roman)
