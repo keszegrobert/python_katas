@@ -13,6 +13,14 @@ class TestRomanToArabicConverter(TestCase):
 		arabic = self.convert('II')
 		self.assertTrue(arabic == 2)
 
+	def test_iii_is_three(self):
+		arabic = self.convert('III')
+		self.assertTrue(arabic == 3)
+
+	def test_iiii_is_four(self):
+		arabic = self.convert('IIII')
+		self.assertTrue(arabic == 4)
+
 	def convert(self,roman):
 		return self.converter.convert(roman)
 
