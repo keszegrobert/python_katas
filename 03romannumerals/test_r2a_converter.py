@@ -5,62 +5,43 @@ class TestRomanToArabicConverter(TestCase):
 	def setUp(self):
 		self.converter = RomanToArabicConverter()
 
-	def test_i_is_one(self):
+	def test_i_and_v(self):
+		self.check_equality('',0)
 		self.check_equality('I',1)
-
-	def test_ii_is_two(self):
 		self.check_equality('II',2)
-
-	def test_iv_is_four(self):
 		self.check_equality('IV',4)
-
-	def test_iii_is_three(self):
 		self.check_equality('III',3)
-
-	def test_iiv_is_invalid(self):
 		self.check_invalidity('IIV')
-
-	def test_ivi_is_invalid(self):
 		self.check_invalidity('IVI')
-
-	def test_ivi_is_invalid(self):
 		self.check_invalidity('IVV')
-
-	def test_iiii_is_four(self):
 		self.check_equality('IIII',4)
-
-	def test_iiiv_is_invalid(self):
 		self.check_invalidity('IIIV')
-
-	def test_iiiiv_is_invalid(self):
 		self.check_invalidity('IIIIV')
-
-	def test_v_is_five(self):
 		self.check_equality('V',5)
-
-	def test_vi_is_six(self):
 		self.check_equality('VI',6)
-
-	def test_vv_is_invalid(self):
 		self.check_invalidity('VV')
-
-	def test_vii_is_seven(self):
 		self.check_equality('VII',7)
-
-	def test_viv_is_invalid(self):
 		self.check_invalidity('VIV')
-
-	def test_viii_is_eight(self):
 		self.check_equality('VIII',8)
-
-	def test_viiv_is_invalid(self):
 		self.check_invalidity('VIIV')
-
-	def test_viiiv_is_invalid(self):
 		self.check_invalidity('VIIIV')
-
-	def test_viiii_is_invalid(self):
 		self.check_invalidity('VIIII')
+
+	def test_i_and_x(self):
+		self.check_equality('IX',9)
+		self.check_invalidity('IIX')
+		self.check_invalidity('IIIX')
+		self.check_invalidity('IIIIX')
+		self.check_equality('X',10)
+		self.check_equality('XI',11)
+		self.check_equality('XX',20)
+		self.check_equality('XII',12)
+		self.check_equality('XIX',19)
+		self.check_equality('XIII',13)
+		self.check_invalidity('XIIX')
+		self.check_equality('XIIII',14)
+		self.check_invalidity('XIIIX')
+		self.check_invalidity('XIIIII')
 
 	def check_equality(self,roman,arabic):
 		converted = self.converter.convert(roman)

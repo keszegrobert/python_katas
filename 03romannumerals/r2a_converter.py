@@ -8,18 +8,24 @@ SV = 5
 SVI = 6
 SVII = 7
 SVIII = 8
+SIX = 9
+SX = 10
+SXI = 11
+SXII = 12
+SXIII = 13
 
 class RomanToArabicConverter:
 	state_machine = {
-		S0:   {'I':(SI,1),   'V':(SV,5)  },
-		SI:   {'I':(SII,1),  'V':(SIV,3) },
+		S0:   {'I':(SI,1),   'V':(SV,5), 'X':(SX,10) },
+		SI:   {'I':(SII,1),  'V':(SIV,3),'X':(SIX,8) },
 		SII:  {'I':(SIII,1) 			 },
 		SIII: {'I':(SIV,1)               },
 		SIV:  {                          },
 		SV:   {'I':(SVI,1)               },
 		SVI:  {'I':(SVII,1)              },
 		SVII: {'I':(SVIII,1)             },
-		SVIII:{}
+		SVIII:{},
+		SX:   {'I':(SI,1),   'V':(SV,5), 'X':(SX,10) },
 	}
 
 
