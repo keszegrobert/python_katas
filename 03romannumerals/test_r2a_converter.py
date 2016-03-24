@@ -34,6 +34,11 @@ class TestRomanToArabicConverter(TestCase):
 		arabic = self.convert('IIV')
 		self.assertFalse(self.converter.is_valid())
 
+	def test_v_is_five(self):
+		arabic = self.convert('V')
+		self.assertEquals(arabic,5)
+		self.assertTrue(self.converter.is_valid())
+
 	def convert(self,roman):
 		return self.converter.convert(roman)
 

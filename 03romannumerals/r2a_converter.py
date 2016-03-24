@@ -14,6 +14,9 @@ class RomanToArabicConverter:
 				if roman[i] == 'I':
 					self.state = self.STATE_I
 					result = 1
+				elif roman[i] == 'V':
+					self.state = self.STATE_V
+					result = 5
 			elif self.state == self.STATE_I:
 				if roman[i] == 'I':
 					self.state = self.STATE_II
