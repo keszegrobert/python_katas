@@ -48,6 +48,22 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_0_to_999(3000,'MMM')
 		self.check_0_to_999(4000,'MMMM')
 
+	def test_5000_should_fail_to_convert_to_roman(self):
+		bException = False
+		try:
+			result = self.converter.convert(5000)
+		except ValueError:
+			bException = True
+		self.assertTrue(bException)
+
+	def test_negative_number_should_fail_to_convert_to_roman(self):
+		bException = False
+		try:
+			result = self.converter.convert(-1)
+		except ValueError:
+			bException = True
+		self.assertTrue(bException)
+
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
 		self.assertEqual(result,roman)

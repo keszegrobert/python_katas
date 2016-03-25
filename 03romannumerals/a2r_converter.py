@@ -15,6 +15,10 @@ class ArabicToRomanConverter:
 		('I',1),
 	]
 	def convert(self,arabic):
+		if (arabic < 0):
+			raise ValueError("arabic number to convert to roman is negative")
+		elif (arabic >= 5000 ):
+			raise ValueError("arabic number to convert to roman is too large")
 		roman = ''
 		while arabic > 0:
 			for key,val in self.romans:
