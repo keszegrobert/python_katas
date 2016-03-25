@@ -27,6 +27,7 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_0_to_9(60,'LX')
 		self.check_0_to_9(70,'LXX')
 		self.check_0_to_9(80,'LXXX')
+		self.check_0_to_9(90,'XC')
 
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
