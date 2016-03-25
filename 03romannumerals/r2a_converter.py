@@ -29,10 +29,13 @@ SDCC = 700
 SDCCC = 800
 SCM = 900
 SM = 1000
+SMM = 2000
+SMMM = 3000
+SMMMM = 4000
 
 class RomanToArabicConverter:
 	state_machine = {
-		S0:   {'I':(SI,1), 'V':(SV,5), 'X':(SX,10), 'L':(SL,50), 'C':(SC,100),'D':(SD,500) },
+		S0:   {'I':(SI,1), 'V':(SV,5), 'X':(SX,10), 'L':(SL,50), 'C':(SC,100),'D':(SD,500),'M':(SM,1000) },
 		SI:   {'I':(SII,1),'V':(SIV,3),'X':(SIX,8), },
 		SII:  {'I':(SIII,1)},
 		SIII: {'I':(SIV,1)},
@@ -60,6 +63,10 @@ class RomanToArabicConverter:
 		SDCC: {'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SDCCC,100)},
 		SDCCC:{'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SCM,100)},
 		SCM:  {'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50)},
+		SM:   {'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SC,100),'D':(SD,500),'M':(SMM,1000)},
+		SMM:  {'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SC,100),'D':(SD,500),'M':(SMMM,1000)},
+		SMMM: {'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SC,100),'D':(SD,500),'M':(SMMMM,1000)},
+		SMMMM:{'I':(SI,1),'V':(SV,5),'X':(SX,10),'L':(SL,50),'C':(SC,100),'D':(SD,500)},
 	}
 
 
