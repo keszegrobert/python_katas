@@ -7,33 +7,19 @@ class TestArabicToRomanConverter(TestCase):
 
 	def test_0(self):
 		self.check_equals_roman(0,'')
-
-	def test_1(self):
 		self.check_equals_roman(1,'I')
-
-	def test_2(self):
 		self.check_equals_roman(2,'II')
-
-	def test_3(self):
 		self.check_equals_roman(3,'III')
-
-	def test_4(self):
 		self.check_equals_roman(4,'IV')
-
-	def test_5(self):
 		self.check_equals_roman(5,'V')
-	
-	def test_6(self):
 		self.check_equals_roman(6,'VI')
-
-	def test_7(self):
 		self.check_equals_roman(7,'VII')
-
-	def test_8(self):
 		self.check_equals_roman(8,'VIII')
-	
-	def test_9(self):
 		self.check_equals_roman(9,'IX')
+		self.check_equals_roman(10,'X')
+		self.check_equals_roman(11,'XI')
+		self.check_equals_roman(12,'XII')
+		self.check_equals_roman(13,'XIII')
 
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
