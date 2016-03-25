@@ -29,9 +29,7 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_0_to_9(add+80,prefix+'LXXX')
 		self.check_0_to_9(add+90,prefix+'XC')
 
-	def	test_0_to_99(self):
-		add = 0
-		prefix = ''
+	def	check_0_to_999(self,add,prefix):
 		self.check_0_to_99(add+0,prefix+'')
 		self.check_0_to_99(add+100,prefix+'C')
 		self.check_0_to_99(add+200,prefix+'CC')
@@ -43,6 +41,12 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_0_to_99(add+800,prefix+'DCCC')
 		self.check_0_to_99(add+900,prefix+'CM')
 
+	def test_every_arabic_convertable_to_roman(self):
+		self.check_0_to_999(0,'')
+		self.check_0_to_999(1000,'M')
+		self.check_0_to_999(2000,'MM')
+		self.check_0_to_999(3000,'MMM')
+		self.check_0_to_999(4000,'MMMM')
 
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
