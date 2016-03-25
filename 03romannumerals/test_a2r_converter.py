@@ -32,6 +32,9 @@ class TestArabicToRomanConverter(TestCase):
 	def test_8(self):
 		self.check_equals_roman(8,'VIII')
 	
+	def test_9(self):
+		self.check_equals_roman(9,'IX')
+
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
 		self.assertEqual(result,roman)

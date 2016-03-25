@@ -1,15 +1,17 @@
 class ArabicToRomanConverter:
-
+	romans = [
+		('IX',9),
+		('V',5),
+		('IV',4),
+		('I',1),
+	]
 	def convert(self,arabic):
 		roman = ''
 		while arabic > 0:
-			if arabic > 4:
-				roman += 'V'
-				arabic -= 5
-			elif arabic == 4:
-				roman += 'IV'
-				arabic -= 4
-			elif arabic > 0:
-				roman += 'I'
-				arabic -= 1
+			for key,val in self.romans:
+				if arabic >= val:
+					arabic -= val
+					roman += key
+					break
+
 		return roman
