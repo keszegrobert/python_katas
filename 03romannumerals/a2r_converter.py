@@ -1,4 +1,7 @@
 class ArabicToRomanConverter:
 
 	def convert(self,arabic):
-		return ''
+		roman = ''
+		for i in range(0,arabic):
+			roman += 'I'
+		return roman
