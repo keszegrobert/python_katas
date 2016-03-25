@@ -18,7 +18,7 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_equals_roman(3,'III')
 
 	def test_4(self):
-		self.check_equals_roman(4,'IIII')
+		self.check_equals_roman(4,'IV')
 
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
