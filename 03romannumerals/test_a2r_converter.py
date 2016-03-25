@@ -17,17 +17,32 @@ class TestArabicToRomanConverter(TestCase):
 		self.check_equals_roman(add+8,prefix+'VIII')
 		self.check_equals_roman(add+9,prefix+'IX')
 
-	def test_0(self):
-		self.check_0_to_9(0,'')
-		self.check_0_to_9(10,'X')
-		self.check_0_to_9(20,'XX')
-		self.check_0_to_9(30,'XXX')
-		self.check_0_to_9(40,'XL')
-		self.check_0_to_9(50,'L')
-		self.check_0_to_9(60,'LX')
-		self.check_0_to_9(70,'LXX')
-		self.check_0_to_9(80,'LXXX')
-		self.check_0_to_9(90,'XC')
+	def check_0_to_99(self,add,prefix):
+		self.check_0_to_9(add+0,prefix+'')
+		self.check_0_to_9(add+10,prefix+'X')
+		self.check_0_to_9(add+20,prefix+'XX')
+		self.check_0_to_9(add+30,prefix+'XXX')
+		self.check_0_to_9(add+40,prefix+'XL')
+		self.check_0_to_9(add+50,prefix+'L')
+		self.check_0_to_9(add+60,prefix+'LX')
+		self.check_0_to_9(add+70,prefix+'LXX')
+		self.check_0_to_9(add+80,prefix+'LXXX')
+		self.check_0_to_9(add+90,prefix+'XC')
+
+	def	test_0_to_99(self):
+		add = 0
+		prefix = ''
+		self.check_0_to_99(add+0,prefix+'')
+		self.check_0_to_99(add+100,prefix+'C')
+		self.check_0_to_99(add+200,prefix+'CC')
+		self.check_0_to_99(add+300,prefix+'CCC')
+		self.check_0_to_99(add+400,prefix+'CD')
+		self.check_0_to_99(add+500,prefix+'D')
+		self.check_0_to_99(add+600,prefix+'DC')
+		self.check_0_to_99(add+700,prefix+'DCC')
+		self.check_0_to_99(add+800,prefix+'DCCC')
+		self.check_0_to_99(add+900,prefix+'CM')
+
 
 	def check_equals_roman(self,arabic,roman):
 		result = self.converter.convert(arabic)
