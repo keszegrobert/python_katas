@@ -1,6 +1,6 @@
 from unittest import TestCase
 from database import DataBase
-from database import DataBaseError
+from database import DBError
 
 class TestDataBase(TestCase):
 	def setUp(self):
@@ -18,7 +18,7 @@ class TestDataBase(TestCase):
 
 		try:
 			self.db.create_table('persons')
-		except DataBaseError, e:
+		except DBError, e:
 			bTableExists = True
 
 		self.assertTrue(bTableExists)
@@ -34,7 +34,7 @@ class TestDataBase(TestCase):
 		bTableExists = False
 		try:
 			self.db.drop_table('persons')
-		except DataBaseError, e:
+		except DBError, e:
 			bTableExists = True
 		self.assertTrue(bTableExists)
 

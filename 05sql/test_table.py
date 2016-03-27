@@ -14,7 +14,7 @@ class TestTable(TestCase):
 		self.assertEqual(self.table.count_rows(),1)
 
 	def test_select(self):
-		self.table.select('')
+		self.table.filter(True)
 
 	def test_insert_invalid_data(self):
 		self.assertEqual(self.table.count_rows(),0)

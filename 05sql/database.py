@@ -57,7 +57,7 @@ class DataBase:
 
 	def create_table(self,tablename):
 		if not self.table_exists(tablename):
-			self.tables[tablename] = DataBaseTable()
+			self.tables[tablename] = DBTable()
 		else:
 			raise DBError('table "'+tablename+'" already exists')
 
