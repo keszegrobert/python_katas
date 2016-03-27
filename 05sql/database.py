@@ -28,8 +28,21 @@ class DBTable:
 		#self.rows.append(row)
 		pass
 
-	def select(self,which):
-		pass
+	def filter(self,condition):
+		filtered_rows = []
+		for row in self.rows:
+			if self.__fits(row,condition):
+				filtered_rows.append(row)
+		return filtered_rows
+
+	def __fits(self,row,condition):
+		if condition == False or condition == True:
+			return condition
+		else:
+			operation, left, right = condition
+			if operation == 'EQ':
+				return row[left] == right
+			return False
 
 class DataBase:
 	def __init__(self):
