@@ -9,7 +9,7 @@ class DBTable:
 	def count_rows(self):
 		return len(self.rows)
 
-	def count_clumns(self):
+	def count_columns(self):
 		return len(self.columns)
 
 	def alter(self,column):
@@ -20,13 +20,19 @@ class DBTable:
 			raise DBError('too many columns in the inserted row')
 		self.rows.append(row)
 
-	def update(self,which,row):
-		#self.rows.(row)
-		pass
+	def update(self,condition,update):
+		updated_rows = []
+		for row in self.rows:
+			if self.__fits(row,condition):
+				updated_rows.append(row)
+		return updated_rows
 
-	def delete(self,which):
-		#self.rows.append(row)
-		pass
+	def delete(self,condition):
+		remaining_rows = []
+		for row in self.rows:
+			if not self.__fits(row,condition):
+				remaining_rows.append(row)
+		self.rows = remaining_rows
 
 	def filter(self,condition):
 		filtered_rows = []
