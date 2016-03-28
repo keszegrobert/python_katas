@@ -42,6 +42,18 @@ class DBTable:
 			operation, left, right = condition
 			if operation == 'EQ':
 				return row[left] == right
+			elif operation == 'NE':
+				return row[left] != right
+			elif operation == 'GT':
+				return row[left] > right
+			elif operation == 'LT':
+				return row[left] < right
+			elif operation == 'LE':
+				return row[left] <= right
+			elif operation == 'GE':
+				return row[left] >= right
+			elif operation == 'AND':
+				return self.__fits(row,left) and self.__fits(row,right) 
 			return False
 
 class DataBase:
