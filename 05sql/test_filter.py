@@ -46,3 +46,11 @@ class TestTable(TestCase):
 		res = self.table.filter(('AND',('EQ','age',25),('EQ','name','Eve')))
 		self.assertEqual(len(res),1)
 
+	def test_filter_age_is_25_and_name_is_Eve(self):
+		res = self.table.filter(('OR',('EQ','age',25),('EQ','name','Adam')))
+		self.assertEqual(len(res),2)
+
+	def test_filter_name_is_in_list(self):
+		res = self.table.filter(('IN','name',['Adam','Eve']))
+		self.assertEqual(len(res),2)
+

@@ -54,6 +54,10 @@ class DBTable:
 				return row[left] >= right
 			elif operation == 'AND':
 				return self.__fits(row,left) and self.__fits(row,right) 
+			elif operation == 'OR':
+				return self.__fits(row,left) or self.__fits(row,right) 
+			elif operation == 'IN':
+				return any(row[left] == s for s in right)
 			return False
 
 class DataBase:
