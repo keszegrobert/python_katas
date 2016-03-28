@@ -2,7 +2,7 @@ from unittest import TestCase
 from database import DBTable
 from database import DBError
 
-class TestTable(TestCase):
+class TestTableDelete(TestCase):
 	def setUp(self):
 		self.table = DBTable()
 		self.table.alter({'name':'name','type':'varchar','size':100})

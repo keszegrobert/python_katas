@@ -24,8 +24,15 @@ class DBTable:
 		updated_rows = []
 		for row in self.rows:
 			if self.__fits(row,condition):
-				updated_rows.append(row)
+				updated_row = self.__update_row(row,update)
+				updated_rows.append(updated_row)
 		return updated_rows
+
+	def __update_row(self,row,update):
+		updated_row = row
+		for key,value in update:
+			updated_row[key] = value
+		return updated_row
 
 	def delete(self,condition):
 		remaining_rows = []
