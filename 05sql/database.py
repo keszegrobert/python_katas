@@ -73,6 +73,52 @@ class DBTable:
 				return any(row[left] == s for s in right)
 			return False
 
+	def __apply_function(self,function,rows):
+		if function == 'COUNT':
+			return len(rows)
+		elif function == 'MIN':
+			minval = None
+			for row in rows:
+				for key,value in row.items():
+					if minval == None:
+						minval = value
+					else:
+						minval = value if value < minval else minval
+			return minval
+		elif function == 'MAX':
+			maxval = None
+			for row in rows:
+				for key,value in row.items():
+					if maxval == None:
+						maxval = value
+					else:
+						maxval = value if value > maxval else maxval
+			return maxval
+		else:
+			return rows
+
+	def select(self,projection,condition):
+		if type(projection) == tuple:
+			function,fields = projection
+			filtered_rows = []
+			for row in self.rows:
+				if self.__fits(row,condition):
+					if fields == '*':
+						filtered_rows.append(row)
+					elif type(fields) == list:
+						filtered_row = {}
+						for element in fields:
+							filtered_row[element] = row[element]
+						filtered_rows.append(filtered_row)
+					elif type(fields) == str:
+						filtered_rows.append({fields:row[fields]})
+					else:
+						raise DBError('fields not defined properly')
+
+			return self.__apply_function(function,filtered_rows)
+		else:
+			return []
+
 class DataBase:
 	def __init__(self):
 		self.tables = {}
