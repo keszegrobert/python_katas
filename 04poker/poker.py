@@ -66,3 +66,31 @@ class PokerHand:
 			and self.__count_cards_of_number('A') == 1
 			and self.__count_cards_of_number('K') == 1
 		)
+
+	def evaluate_hand(self):
+		if self.has_royal_flush():
+			return 100
+		elif self.has_straight_flush():
+			return 90
+		elif self.has_poker():
+			return 80
+		elif self.has_full():
+			return 70
+		elif self.has_flush():
+			return 60
+		elif self.has_straight():
+			return 50
+		elif self.has_set():
+			return 40
+		elif self.has_two_pairs():
+			return 30
+		elif self.has_pair():
+			return 20
+		else:
+			return 10
+
+	def is_stronger_than(self,other):
+		left_hand_value = self.evaluate_hand()
+		right_hand_value = other.evaluate_hand()
+		return left_hand_value > right_hand_value
+
