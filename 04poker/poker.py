@@ -1,5 +1,5 @@
 
-NUMBERS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
+NUMBERS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K','A']
 COLORS = [
 	'C', # clubs
 	'D', # diamonds
@@ -18,9 +18,12 @@ class PokerHand:
 		return sum
 
 	def __count_cards_of_color(self,color):
-		sum = 0;
+		sum = 0
+		last = 0
 		for number in NUMBERS:
-			sum += self.cards.count((color,number))
+			last = self.cards.count((color,number))
+			sum += last
+		sum -= last #handling 'A'
 		return sum
 
 	def __count_numbers(self):
@@ -56,3 +59,10 @@ class PokerHand:
 
 	def has_straight_flush(self):
 		return self.has_straight() and self.has_flush()
+
+	def has_royal_flush(self):
+		return (
+			self.has_straight_flush() 
+			and self.__count_cards_of_number('A') == 1
+			and self.__count_cards_of_number('K') == 1
+		)
