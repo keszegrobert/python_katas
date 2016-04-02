@@ -54,3 +54,5 @@ class PokerHand:
 	def has_poker(self):
 		return 4 in self.__count_numbers()
 
+	def has_straight_flush(self):
+		return self.has_straight() and self.has_flush()
