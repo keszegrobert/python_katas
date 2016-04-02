@@ -48,6 +48,9 @@ class PokerHand:
 	def has_flush(self):
 		return 5 in self.__count_colors()
 
+	def has_full(self):
+		return self.has_pair() and self.has_set()
+
 	def has_poker(self):
 		return 4 in self.__count_numbers()
 
