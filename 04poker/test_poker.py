@@ -11,7 +11,7 @@ SAMPLE_FULL =		[('C','6'),('D','6'),('S','6'),('H','J'),('C','J')]
 SAMPLE_POKER =		[('C','Q'),('D','Q'),('S','Q'),('H','Q'),('C','9')]
 
 SAMPLES = [SAMPLE_HIGH,SAMPLE_PAIR,SAMPLE_TWOPAIRS,
-	SAMPLE_DRILL,SAMPLE_STRAIGHT,SAMPLE_POKER,SAMPLE_FLUSH,SAMPLE_FULL
+	SAMPLE_DRILL,SAMPLE_STRAIGHT,SAMPLE_FLUSH,SAMPLE_FULL,SAMPLE_POKER
 ]
 
 class TestPokerHand(TestCase):
@@ -19,7 +19,7 @@ class TestPokerHand(TestCase):
 		pass
 
 	def test_hand_has_pair(self):
-		expected = [False,True,True,False,False,False,False,True]
+		expected = [False,True,True,False,False,False,True,False]
 		actual = [PokerHand(sample).has_pair() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
@@ -29,7 +29,7 @@ class TestPokerHand(TestCase):
 		self.assertEqual(expected,actual)
 
 	def test_hand_has_set(self):
-		expected = [False,False,False,True,False,False,False,True]
+		expected = [False,False,False,True,False,False,True,False]
 		actual = [PokerHand(sample).has_set() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
@@ -39,17 +39,17 @@ class TestPokerHand(TestCase):
 		self.assertEqual(expected,actual)
 
 	def test_hand_has_flush(self):
-		expected = [False,False,False,False,False,False,True,False]
+		expected = [False,False,False,False,False,True,False,False]
 		actual = [PokerHand(sample).has_flush() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
 	def test_hand_has_full(self):
-		expected = [False,False,False,False,False,False,False,True]
+		expected = [False,False,False,False,False,False,True,False]
 		actual = [PokerHand(sample).has_full() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
 	def test_hand_has_poker(self):
-		expected = [False,False,False,False,False,True,False,False]
+		expected = [False,False,False,False,False,False,False,True]
 		actual = [PokerHand(sample).has_poker() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
