@@ -17,17 +17,17 @@ class PokerHand:
 			sum += self.cards.count((color,number))
 		return sum
 
-	def __has_equal_numbers(self,count):
-		for number in NUMBERS:
-			if (self.__count_colors(number) == count):
-				return True
-		return False
+	def __count_numbers(self):
+		return [self.__count_colors(number) for number in NUMBERS]
 
 	def has_pair(self):
-		return self.__has_equal_numbers(2)
+		return 2 in self.__count_numbers()
 
 	def has_drill(self):
-		return self.__has_equal_numbers(3)
+		return 3 in self.__count_numbers()
 
 	def has_poker(self):
-		return self.__has_equal_numbers(4)
+		return 4 in self.__count_numbers()
+
+	def has_two_pairs(self):
+		return self.__count_numbers().count(2) == 2
