@@ -23,7 +23,7 @@ class PokerHand:
 	def has_pair(self):
 		return 2 in self.__count_numbers()
 
-	def has_drill(self):
+	def has_set(self):
 		return 3 in self.__count_numbers()
 
 	def has_poker(self):

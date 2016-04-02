@@ -23,9 +23,9 @@ class TestPokerHand(TestCase):
 		actual = [PokerHand(sample).has_two_pairs() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
-	def test_hand_has_drill(self):
+	def test_hand_has_set(self):
 		expected = [False,False,False,True,False]
-		actual = [PokerHand(sample).has_drill() for sample in SAMPLES]
+		actual = [PokerHand(sample).has_set() for sample in SAMPLES]
 		self.assertEqual(expected,actual)
 
 	def test_hand_has_poker(self):
