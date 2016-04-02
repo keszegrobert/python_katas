@@ -1,5 +1,5 @@
 
-NUMBERS = ['A','2','3','4','5','6','7','8','9','J','Q','K']
+NUMBERS = ['A','2','3','4','5','6','7','8','9','10','J','Q','K']
 COLORS = [
 	'C', # clubs
 	'D', # diamonds
@@ -23,11 +23,19 @@ class PokerHand:
 	def has_pair(self):
 		return 2 in self.__count_numbers()
 
+	def has_two_pairs(self):
+		return self.__count_numbers().count(2) == 2
+
 	def has_set(self):
 		return 3 in self.__count_numbers()
+
+	def has_straight(self):
+		numbers = self.__count_numbers()
+		groups = ''
+		for i in range(0, len(numbers)):
+			groups += str(numbers[i])
+		return groups.find('11111') > -1
 
 	def has_poker(self):
 		return 4 in self.__count_numbers()
 
-	def has_two_pairs(self):
-		return self.__count_numbers().count(2) == 2
