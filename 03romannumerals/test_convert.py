@@ -13,7 +13,7 @@ class TestConvert(TestCase):
 			roman = self.a2r.convert(number)
 			arabic = self.r2a.convert(roman)
 			self.assertEqual(arabic,number)
-			roman2 = self.a2r.convert(number)
+			roman2 = self.a2r.convert(arabic)
 			self.assertEqual(roman,roman2)
 
 if __name__ == '__main__':

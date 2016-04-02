@@ -31,5 +31,5 @@ class TestSelect(TestCase):
 		self.assertEqual(res,2)
 
 	def test_select_count_of_all(self):
-		res = self.table.select(('COUNT',['name','age']),True)
-		self.assertEqual(res,2)
+		res = self.table.select(('',['name','age']),True)
+		self.assertEqual(res,[{'name':'Adam','age':28},{'name':'Eve','age':25}])

@@ -43,3 +43,6 @@ class TestBowlingGame(TestCase):
 	def test_perfectgame(self):
 		self.roll_many(12,10)
 		assert self.game.score() == 300
+
+if __name__ == '__main__':
+	unittest.main()
